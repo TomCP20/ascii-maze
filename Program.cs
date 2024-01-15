@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            Maze m = MazeGenerator.GenerateMaze(7, 30);
+            Maze m = MazeGenerator.GenerateMaze(100, 100);
             m.displayMaze();
         }
     }
