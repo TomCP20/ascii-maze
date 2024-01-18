@@ -8,11 +8,26 @@ namespace AsciiMaze
         public readonly int height;
         public readonly int width;
 
-        public Maze(string[] maze, int height, int width)
+        public Maze(int rows, int cols)
+        {
+            height = 2*rows+1;
+            width = 2*cols+1;
+            string evenRow = new string('#', width);
+            string[] walls = new string[cols+1];
+            Array.Fill(walls, "#");
+            string oddRow = string.Join(".", walls);
+            this.maze = new string[height];
+            for (int i = 0; i < height; i++)
+            {
+                maze[i] = i % 2 == 0 ? evenRow : oddRow;
+            }
+        }
+
+        public Maze(string[] maze, int rows, int cols)
         {
             this.maze = maze;
-            this.height = height;
-            this.width = width;
+            height = 2*rows+1;
+            width = 2*cols+1;
         }
 
         public override string ToString()
